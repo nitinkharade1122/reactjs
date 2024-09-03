@@ -14,7 +14,7 @@ import { formatDistance, subDays } from 'date-fns';
 import { Typography } from 'src/shared/components/index';
 
 const HeaderNotifications = () => {
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleOpen = (): void => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../providers/AuthguardContext';
 import * as ROUTES from '../shared/constants/routes';
@@ -11,10 +11,16 @@ interface IGuardedRouteProps {
 
 export const GuardedRoute = ({
   component: RouteComponent,
-  allowedRoles = [], // Default value for allowedRoles
-  path = '', // Default value for path
+  allowedRoles = [],
+  path = '',
 }: IGuardedRouteProps) => {
   const { accessToken, roles, logout } = useAuth();
+
+  useEffect(() => {
+    if (!accessToken) {
+      logout();
+    }
+  }, [accessToken, logout]);
 
   if (
     accessToken &&
@@ -24,7 +30,6 @@ export const GuardedRoute = ({
   } else if (accessToken) {
     return <Navigate to={ROUTES.ERROR_PAGE} replace />;
   } else {
-    logout();
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 };
