@@ -5,7 +5,7 @@ import {
   List,
   Menu,
   MenuItem,
-  ListItem,
+  ListItemButton,
   Tooltip
 } from '@mui/material';
 import { useRef, useState } from 'react';
@@ -16,7 +16,7 @@ const LangSelect = () => {
     localStorage.getItem('language') || 'English'
   );
 
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLLIElement>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleOpen = (): void => {
@@ -37,9 +37,10 @@ const LangSelect = () => {
     <>
       <Box className="listWrapper">
         <List>
-          <ListItem
+          <ListItemButton
+          component="li" 
             classes={{ root: 'MuiListItem-indicators' }}
-            button
+        
             ref={ref}
             defaultValue="a"
             onClick={handleOpen}
@@ -57,7 +58,7 @@ const LangSelect = () => {
                 }
               />
             </Tooltip>
-          </ListItem>
+          </ListItemButton>
         </List>
       </Box>
       <Box sx={{ mr: 1 }}>
