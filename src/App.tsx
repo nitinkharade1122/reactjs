@@ -1,6 +1,5 @@
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-
 import React, { useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import router from './router/router';
@@ -99,7 +98,7 @@ const App = () => {
         <AuthProvider>
           <StylesProvider injectFirst>
             <ThemeProvider theme={theme}>
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <CssBaseline />
                 {content}
                 {configsButton}

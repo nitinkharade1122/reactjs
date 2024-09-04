@@ -407,8 +407,5 @@ RecentOrdersCard.propTypes = {
   cryptoOrders: PropTypes.array.isRequired
 };
 
-RecentOrdersCard.defaultProps = {
-  cryptoOrders: []
-};
 
 export default RecentOrdersCard;

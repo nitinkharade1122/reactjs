@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, SvgIconProps } from '@mui/material';
+import { Grid2 as Grid, SvgIconProps } from '@mui/material';
 
 interface PageHeaderProps {
   children?: React.ReactNode[];
@@ -21,7 +21,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
   ...rest
 }) => {
   return (
-    <Grid item xs={12} sm={12} md={'auto'}>
+    <Grid size={{ xs: 12, sm: 12, md: 'auto' }}>
       <Grid 
       container
       display='flex'
@@ -35,7 +35,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
       >
         {children.map((item, index) => {
           return(
-            <Grid key={`header${index}`} item md={'auto'}>
+            <Grid key={`header${index}`} size={{md:'auto'}} >
               {item}
             </Grid>
           )

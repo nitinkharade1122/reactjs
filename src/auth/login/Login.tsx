@@ -4,7 +4,7 @@ import {
   Container,
   CssBaseline,
   FormControlLabel,
-  Grid,
+  Grid2 as Grid,
   Link
 } from '@mui/material';
 import { useState } from 'react';
@@ -63,11 +63,13 @@ const Login = () => {
           <Grid container spacing={2} className="">
             <Grid
               className="flex-basic-center loginBox"
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={6}
+              size={{
+                xs:12,
+                sm:6,
+                md:6,
+                lg:6
+              }}
+             
             >
               <CardContent sx={{ p: 5 }}>
                 <Box sx={{ mb: 3 }} className="flex-basic-center">
@@ -133,11 +135,12 @@ const Login = () => {
             </Grid>
             <Grid
               className="loginWithGoogle flex-basic-center"
-              item
-              xs={12}
-              md={6}
-              sm={6}
-              lg={6}
+              size={{
+                xs:12,
+                sm:6,
+                md:6,
+                lg:6
+              }}
             >
               <Box sx={{ p: 10 }} className="flex-column-center w-100">
                 <Box className="w-100">

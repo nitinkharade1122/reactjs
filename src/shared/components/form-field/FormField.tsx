@@ -229,26 +229,22 @@ export const FormField = ({ fieldProps }: FormFieldProps) => {
             label={fieldProps?.label}
             error={meta.touched && meta.error !== undefined}
             helperText={meta.touched && meta.error}
-            inputProps={
-              !fieldProps?.errorMessages?.maxLenghtErrMsg
-                ? {
-                    maxLength: fieldProps?.validations?.maxLength
-                  }
-                : {}
-            }
-            InputProps={
-              fieldProps?.type === FIELD_TYPE.PASSWORD
-                ? {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton onClick={handleTogglePassword} edge="end">
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    )
-                  }
-                : {}
-            }
+            slotProps={{
+              input: {
+                maxLength: !fieldProps?.errorMessages?.maxLenghtErrMsg
+                  ? fieldProps?.validations?.maxLength
+                  : {}
+              },
+              adornments: {
+                end: fieldProps?.type === FIELD_TYPE.PASSWORD ? (
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleTogglePassword} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ) : {}
+              }
+            }}
             multiline={fieldProps?.type === FIELD_TYPE.TEXTAREA}
             rows={
               fieldProps?.type === FIELD_TYPE.TEXTAREA &&

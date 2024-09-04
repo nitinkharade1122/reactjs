@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Avatar, Box, Button, Hidden, Popover } from '@mui/material';
+import { Avatar, Box, Button, Popover } from '@mui/material';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import { useAuth } from 'src/providers/AuthguardContext';
@@ -8,11 +8,10 @@ import { getLoggedInUserData } from 'src/modules/Transactions/services/transacti
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from 'src/store/configure-store';
 
-
 const HeaderUserbox = () => {
-
   const dispatch = useDispatch<AppDispatch>();
   const { userData } = useSelector((state: RootState) => state.userData);
+
   useEffect(() => {
     dispatch(getLoggedInUserData());
   }, []);
@@ -32,23 +31,20 @@ const HeaderUserbox = () => {
   const userLogout = () => {
     logout();
   };
+
   return (
     <>
       <Button color="secondary" ref={ref} onClick={handleOpen}>
         <Avatar variant="rounded" alt={userData?.name} src={userData?.avatar} />
-        <Hidden mdDown>
-          <Box className="UserBoxText">
-            <Typography className="UserBoxLabel" variant="body1">
-              {userData?.name}
-            </Typography>
-            <Typography className="UserBoxDescription" variant="body2">
-              {userData?.jobtitle}
-            </Typography>
-          </Box>
-        </Hidden>
-        <Hidden smDown>
-          <ExpandMoreTwoToneIcon sx={{ ml: 1 }} />
-        </Hidden>
+        <Box className="hidden md:flex flex-col ml-2">
+          <Typography className="UserBoxLabel" variant="body1">
+            {userData?.name}
+          </Typography>
+          <Typography className="UserBoxDescription" variant="body2">
+            {userData?.jobtitle}
+          </Typography>
+        </Box>
+        <ExpandMoreTwoToneIcon className="hidden sm:inline-block ml-1" />
       </Button>
       <Popover
         anchorEl={ref.current}

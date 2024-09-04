@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, IconButton, Tooltip } from '@mui/material';
+import { Box, Divider, Grid2 as Grid, IconButton, Tooltip } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FC } from 'react';
 
@@ -125,7 +125,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({
         <Box flex={1} p={3}>
           <Container maxWidth="lg">
             <Grid container direction="row-reverse" spacing={2}>
-              <Grid item lg={4}>
+              <Grid size={{lg: 4 }} >
                 <TextField
                   id="outlined-search"
                   label="Search field"
