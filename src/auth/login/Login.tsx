@@ -9,9 +9,9 @@ import IllustrationLogin from 'src/assets/images/IllustrationLogin.svg';
 import logo from 'src/assets/images/indexnine-logo.svg';
 import axiosInstance from 'src/core/interceptors/axios-instance';
 import { Card } from 'src/shared/components/index';
-import { TENANT } from '../../shared/constants/routes';
 import { setUserDetails, UserType } from 'src/store/reducer/userReducer';
 import styled from 'styled-components';
+import { TENANT, USER, USER_DASHBOARD } from '../../shared/constants/routes';
 import LoginByUserNamePassword from './LoginByUserNamePassword';
 
 const Login = () => {
@@ -44,7 +44,25 @@ const Login = () => {
     if (token) {
       const decodedToken = jwtDecode<UserType>(token);
       dispatch(setUserDetails(decodedToken));
-      navigate(TENANT);
+      const isSuperAdmin = decodedToken.tenantRoles.find((role) =>
+        role.roles.includes('SUPER_ADMIN')
+      );
+      const isAdmin = decodedToken.tenantRoles.find((role) =>
+        role.roles.includes('ADMIN')
+      );
+      // Navigate based on the role
+      if (isSuperAdmin) {
+        axiosInstance.defaults.headers['currentTenantId'] =
+          isSuperAdmin?.tenantId;
+        navigate(TENANT);
+      } else if (isAdmin) {
+        axiosInstance.defaults.headers['currentTenantId'] = isAdmin?.tenantId;
+        navigate(USER);
+      } else {
+        axiosInstance.defaults.headers['currentTenantId'] =
+          decodedToken?.tenantRoles[0]?.tenantId;
+        navigate(USER_DASHBOARD);
+      }
     }
   };
 

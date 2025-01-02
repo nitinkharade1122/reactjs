@@ -39,5 +39,65 @@
     "unique_data_err_msg": "Please enter unique {{fieldLabel}}",
     "valid_regex_err_msg": "Please enter valid regex",
     "default_err_msg": "Something went wrong"
+  },
+  "dashboard": {
+    "header": {
+      "welcome": "Welcome",
+      "message": "Indexnine, your partner at any stage of the product journey",
+      "refresh": "Refresh"
+    },
+    "account_balance": {
+      "account_balance": "Account Balance",
+      "this_month": "This Month",
+      "send": "Send",
+      "receive": "Receive"
+    },
+    "wallets": {
+      "wallets": "Wallets",
+      "add_new_wallet": "Add New Wallet",
+      "watch_list": "Watch List",
+      "view_more_assets": "View more assets"
+    },
+    "account_security": {
+      "account_security": "Account Security",
+      "phone_verification": "Phone Verification",
+      "recovery_email": "Recovery Email"
+    },
+    "total_revenue": {
+      "total_revenue": "Total Revenue"
+    },
+    "company_skills": {
+      "company_skills": "Company Skills",
+      "skillName": "Skill Name",
+      "employees": "Employees",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "projects": "Projects",
+      "empDetailsPopupTitle": "Employees Details With {{language}} Skill",
+      "close": "Close"
+    },
+    "employees": {
+      "employees": "Employees",
+      "total_employees": "Total Employees"
+    },
+    "domain_specific_projects": {
+      "domain_specific_projects": "Domain-specific projects"
+    },
+    "customer_satisfaction": {
+      "customer_satisfaction": "Customer Satisfaction"
+    },
+    "region_wise_customers": {
+      "region_wise_customers": "Region-wise Customers"
+    },
+    "customer_projects": {
+      "customer_projects": "Customer Projects"
+    },
+    "employee_skill_details": {
+      "empName": "Employee Name",
+      "skill": "Skill",
+      "available": "Available",
+      "projects": "Projects",
+      "empId": "Employee Id"
+    }
   }
 }

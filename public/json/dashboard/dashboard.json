@@ -1,0 +1,254 @@
+{
+  "userData": [
+    {
+      "name": "Munroe Dacks",
+      "id": "munroe_dacks",
+      "healthscore": 8.2,
+      "weight": "120 Lbs",
+      "bml": 29.6,
+      "data_point_type": "average",
+      "avatar": "/static/images/avatars/1.jpg"
+    },
+    {
+      "name": "Gunilla Canario",
+      "id": "gunilla_canario",
+      "healthscore": 7,
+      "weight": "110 Lbs",
+      "bml": 22.3,
+      "data_point_type": "critical",
+      "avatar": "/static/images/avatars/2.jpg"
+    }
+  ],
+
+  "projectsData": [
+    {
+      "id": "1",
+      "project_name": "Arena9",
+      "project_manager": "Nick Jonas",
+      "start_date": "20/10/2022",
+      "end_date": "30/10/2023",
+      "project_period": "1 year 0 months",
+      "team_size": "12",
+      "project_status": "Ongoing",
+      "project_domain": "Healthcare",
+      "client_name": "John Smith"
+    },
+    {
+      "id": "2",
+      "project_name": "Comcast",
+      "project_manager": "Zane Pineda",
+      "start_date": "20/10/2019",
+      "end_date": "31/12/2023",
+      "project_period": "4 year 2 months",
+      "team_size": "20",
+      "project_status": "Ongoing",
+      "project_domain": "Fintech",
+      "client_name": "Lucas Willis"
+    },
+    {
+      "id": "3",
+      "project_name": "Signify",
+      "project_manager": "Jessica Pearson",
+      "start_date": "20/10/2019",
+      "end_date": "30/05/2022",
+      "project_period": "2 year 6 months",
+      "team_size": "7",
+      "project_status": "Ongoing",
+      "project_domain": "Fintech",
+      "client_name": "Harvey Spector"
+    },
+    {
+      "id": "4",
+      "project_name": "CX-One",
+      "project_manager": "Sheldon Mullins",
+      "start_date": "20/10/2020",
+      "end_date": "30/10/2023",
+      "project_period": "3 year 0 months",
+      "team_size": "15",
+      "project_status": "Ongoing",
+      "project_domain": "CRM",
+      "client_name": "Samuel Newman"
+    },
+    {
+      "id": "5",
+      "project_name": "PM-Gamification",
+      "project_manager": "Jocelyn Pennington",
+      "start_date": "15/03/2021",
+      "end_date": "30/04/2023",
+      "project_period": "1 year 0 months",
+      "team_size": "18",
+      "project_status": "Completed",
+      "project_domain": "PM",
+      "client_name": "Carolyn Baker"
+    },
+    {
+      "id": "6",
+      "project_name": "Ionics",
+      "project_manager": "Teagan Perez",
+      "start_date": "05/04/2017",
+      "end_date": "-",
+      "project_period": "6 year 6 months",
+      "team_size": "12",
+      "project_status": "Ongoing",
+      "project_domain": "Healthcare",
+      "client_name": "Cecelia Holden"
+    },
+    {
+      "id": "7",
+      "project_name": "Great8",
+      "project_manager": "Mike Ross",
+      "start_date": "01/10/2022",
+      "end_date": "-",
+      "project_period": "1 year 1 month",
+      "team_size": "10",
+      "project_status": "Ongoing",
+      "project_domain": "Edutech",
+      "client_name": "Pedro Houston"
+    },
+    {
+      "id": "8",
+      "project_name": "Grillio",
+      "project_manager": "Teagan Krause",
+      "start_date": "01/03/2022",
+      "end_date": "01/01/2024",
+      "project_period": "1 year 10 months",
+      "team_size": "16",
+      "project_status": "Ongoing",
+      "project_domain": "Healthcare",
+      "client_name": "Coleman Jackson"
+    },
+    {
+      "id": "9",
+      "project_name": "Conclex",
+      "project_manager": "Finley Herman",
+      "start_date": "20/12/2019",
+      "end_date": "30/10/2020",
+      "project_period": "0 year 9 months",
+      "team_size": "6",
+      "project_status": "Completed",
+      "project_domain": "IOT",
+      "client_name": "Jameson Duffy"
+    },
+    {
+      "id": "10",
+      "project_name": "Maxima Health",
+      "project_manager": "Karlie Velasquez",
+      "start_date": "10/01/2018",
+      "end_date": "-",
+      "project_period": "4 year 2 months",
+      "team_size": "8",
+      "project_status": "Completed",
+      "project_domain": "Healthcare",
+      "client_name": "Londyn Snyder"
+    }
+  ],
+
+  "companySkillsData": [
+    {
+      "id": "flutter",
+      "name": "Flutter",
+      "employees": "15+",
+      "available": "05",
+      "unavailable": "10",
+      "projects": "5+"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "employees": "15+",
+      "available": "10",
+      "unavailable": "05",
+      "projects": "15+"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "employees": "30+",
+      "available": "20",
+      "unavailable": "10",
+      "projects": "25+"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "employees": "25+",
+      "available": "15",
+      "unavailable": "10",
+      "projects": "10+"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "employees": "10+",
+      "available": "05",
+      "unavailable": "05",
+      "projects": "8+"
+    }
+  ],
+
+  "totalEmployees": {
+    "total": 175,
+    "maleEmployees": 96,
+    "femaleEmployees": 79,
+    "transgenderEmployees": 0,
+    "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+    "min": 0,
+    "max": 200,
+    "series": [
+      {
+        "name": "Employees",
+        "data": [30, 45, 50, 60, 90, 90, 100, 110, 140, 175]
+      }
+    ]
+  },
+
+  "domainSpecificProjects": {
+    "series": [
+      {
+        "data": [
+          {
+            "x": "Cyber Security",
+            "y": 10
+          },
+          {
+            "x": "IOT",
+            "y": 20
+          },
+          {
+            "x": "Healthcare",
+            "y": 25
+          },
+          {
+            "x": "Fintech",
+            "y": 40
+          },
+          {
+            "x": "Education",
+            "y": 10
+          },
+          {
+            "x": "Other",
+            "y": 20
+          }
+        ]
+      }
+    ]
+  },
+
+  "customerSatisfaction": {
+    "series": [44, 55, 17, 41, 15],
+    "labels": [
+      "Very Satisfied",
+      "Satisfied",
+      "Neutral",
+      "Very Unsatisfied",
+      "Unsatisfied"
+    ],
+    "colors": ["#B3E5FC", "#FFCC80", "#FFAB91", "#CE93D8", "#80CBC4"]
+  },
+
+  "regionWiseCustomers": {
+    "total": "85+",
+    "dataFilePath": "./mapData.csv"
+  }
+}

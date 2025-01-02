@@ -1,0 +1,295 @@
+{
+  "userData": [
+    {
+      "name": "Munroe Dacks",
+      "id": "munroe_dacks",
+      "healthscore": 8.2,
+      "weight": "120 Lbs",
+      "bml": 29.6,
+      "data_point_type": "average",
+      "avatar": "/static/images/avatars/1.jpg"
+    },
+    {
+      "name": "Gunilla Canario",
+      "id": "gunilla_canario",
+      "healthscore": 7,
+      "weight": "110 Lbs",
+      "bml": 22.3,
+      "data_point_type": "critical",
+      "avatar": "/static/images/avatars/2.jpg"
+    }
+  ],
+
+  "projectsData": [
+    {
+      "id": "11",
+      "project_name": "Project Force",
+      "project_manager": "Jonas Nick",
+      "start_date": "20/10/2022",
+      "end_date": "30/10/2023",
+      "project_period": "1 year 0 months",
+      "team_size": "12",
+      "project_status": "Ongoing",
+      "project_domain": "CareHealth",
+      "client_name": "Smith John"
+    },
+    {
+      "id": "12",
+      "project_name": "Project Mecha",
+      "project_manager": "Smith John",
+      "start_date": "20/10/2019",
+      "end_date": "31/12/2023",
+      "project_period": "4 year 2 months",
+      "team_size": "20",
+      "project_status": "Ongoing",
+      "project_domain": "Fintech",
+      "client_name": "Zane Pineda"
+    },
+    {
+      "id": "13",
+      "project_name": "Program Pad",
+      "project_manager": "Pearson Jessica",
+      "start_date": "20/10/2019",
+      "end_date": "30/05/2022",
+      "project_period": "2 year 6 months",
+      "team_size": "7",
+      "project_status": "Ongoing",
+      "project_domain": "Fintech",
+      "client_name": "Hathor"
+    },
+    {
+      "id": "14",
+      "project_name": "CX-One",
+      "project_manager": "Ronald Lee",
+      "start_date": "20/10/2020",
+      "end_date": "30/10/2023",
+      "project_period": "3 year 0 months",
+      "team_size": "15",
+      "project_status": "Ongoing",
+      "project_domain": "CRM",
+      "client_name": "Chelsea Miller"
+    },
+    {
+      "id": "15",
+      "project_name": "Project Zen",
+      "project_manager": "Rosemary Booth",
+      "start_date": "15/03/2021",
+      "end_date": "30/04/2023",
+      "project_period": "1 year 0 months",
+      "team_size": "18",
+      "project_status": "Completed",
+      "project_domain": "PM",
+      "client_name": "Alma Gordon"
+    },
+    {
+      "id": "16",
+      "project_name": "Module Program",
+      "project_manager": "Kelsey Montgomery",
+      "start_date": "05/04/2017",
+      "end_date": "-",
+      "project_period": "6 year 6 months",
+      "team_size": "12",
+      "project_status": "Ongoing",
+      "project_domain": "Healthcare",
+      "client_name": "Adalmar Biermann"
+    },
+    {
+      "id": "17",
+      "project_name": "Project Chroma",
+      "project_manager": "Wiebke Sander",
+      "start_date": "01/10/2022",
+      "end_date": "-",
+      "project_period": "1 year 1 month",
+      "team_size": "10",
+      "project_status": "Ongoing",
+      "project_domain": "Edutech",
+      "client_name": "Hilbert Falk"
+    },
+    {
+      "id": "18",
+      "project_name": "Momentum Program",
+      "project_manager": "Juliane Southers",
+      "start_date": "01/03/2022",
+      "end_date": "01/01/2024",
+      "project_period": "1 year 10 months",
+      "team_size": "16",
+      "project_status": "Ongoing",
+      "project_domain": "Healthcare",
+      "client_name": "Coleman Jackson"
+    },
+    {
+      "id": "19",
+      "project_name": "Strategic Program",
+      "project_manager": "Gertrude Peters",
+      "start_date": "20/12/2019",
+      "end_date": "30/10/2020",
+      "project_period": "0 year 9 months",
+      "team_size": "6",
+      "project_status": "Completed",
+      "project_domain": "IOT",
+      "client_name": "Seppel Tiedemann"
+    },
+    {
+      "id": "20",
+      "project_name": "Othello",
+      "project_manager": "Lutz Baumann",
+      "start_date": "10/01/2018",
+      "end_date": "-",
+      "project_period": "4 year 2 months",
+      "team_size": "8",
+      "project_status": "Completed",
+      "project_domain": "Healthcare",
+      "client_name": "Gertraud Mayerr"
+    }
+  ],
+
+  "companySkillsData": [
+    {
+      "id": "flutter",
+      "name": "Flutter",
+      "employees": "25+",
+      "available": "15",
+      "unavailable": "10",
+      "projects": "10+"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "employees": "25+",
+      "available": "20",
+      "unavailable": "05",
+      "projects": "25+"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "employees": "15+",
+      "available": "10",
+      "unavailable": "05",
+      "projects": "15+"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "employees": "25+",
+      "available": "10",
+      "unavailable": "15",
+      "projects": "15+"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "employees": "20+",
+      "available": "10",
+      "unavailable": "10",
+      "projects": "5+"
+    }
+  ],
+
+  "totalEmployees": {
+    "total": 130,
+    "maleEmployees": 80,
+    "femaleEmployees": 65,
+    "transgenderEmployees": 0,
+    "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+    "min": 0,
+    "max": 150,
+    "series": [
+      {
+        "name": "Employees",
+        "data": [40, 55, 60, 60, 110, 110, 100, 130]
+      }
+    ]
+  },
+
+  "domainSpecificProjects": {
+    "series": [
+      {
+        "data": [
+          {
+            "x": "Cyber Security",
+            "y": 10
+          },
+          {
+            "x": "IOT",
+            "y": 10
+          },
+          {
+            "x": "Healthcare",
+            "y": 20
+          },
+          {
+            "x": "Fintech",
+            "y": 30
+          },
+          {
+            "x": "Education",
+            "y": 20
+          },
+          {
+            "x": "Other",
+            "y": 30
+          }
+        ]
+      }
+    ]
+  },
+
+  "customerSatisfaction": {
+    "series": [54, 35, 27, 31, 25],
+    "labels": [
+      "Very Satisfied",
+      "Satisfied",
+      "Neutral",
+      "Very Unsatisfied",
+      "Unsatisfied"
+    ],
+    "chart": {
+      "height": 220,
+      "type": "donut",
+      "zoom": {
+        "enabled": false
+      },
+      "toolbar": {
+        "show": false
+      }
+    },
+    "dataLabels": {
+      "enabled": false
+    },
+    "colors": ["#B3E5FC", "#FFCC80", "#FFAB91", "#CE93D8", "#80CBC4"],
+    "legend": {
+      "show": true,
+      "position": "bottom",
+      "horizontalAlign": "left",
+      "markers": {
+        "radius": 0
+      }
+    },
+    "plotOptions": {
+      "pie": {
+        "donut": {
+          "labels": {
+            "show": false,
+            "name": {
+              "fontSize": "10px"
+            },
+            "value": {
+              "show": false,
+              "fontSize": "20px"
+            },
+            "total": {
+              "show": false,
+              "label": "60%"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "regionWiseCustomers": {
+    "total": "95+",
+    "dataFilePath": "./mapData2.csv"
+  }
+}

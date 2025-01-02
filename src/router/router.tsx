@@ -15,6 +15,7 @@ import { GuardedRoute } from "./guarded-routes";
 import Dashboard from "src/modules/Dashboard/Dashboard";
 import { SuspenseLoader } from "src/shared/components/index";
 import * as ROUTES from "../shared/constants/routes";
+import UserDashboard from "../modules/Dashboard/UserDashboard";
 
 const Loader = (Component) => (props) => (
   <Suspense fallback={<SuspenseLoader />}>
@@ -75,6 +76,10 @@ const routes: RouteObject[] = [
       {
         path: ROUTES.ROLE,
         element: <Dashboard title="Role Management" />,
+      },
+      {
+        path: ROUTES.USER_DASHBOARD,
+        element: <UserDashboard />,
       },
     ]
   },

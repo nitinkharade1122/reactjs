@@ -1,0 +1,200 @@
+{
+  "employeesData": [
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0145",
+      "employee_name": "Zane Pineda",
+      "key": "flutter",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0146",
+      "employee_name": "Damari Welch",
+      "key": "react",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Indexnine Website"]
+    },
+    {
+      "id": "IDX-E0147",
+      "employee_name": "Lucas Willis",
+      "key": "react",
+      "available": "no",
+      "projects": ["Trellis", "React Seed", "growthsphere"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0199",
+      "employee_name": "Sheldon Mullins",
+      "key": "angular",
+      "available": "yes",
+      "projects": ["Trellis", "React Seed", "Angular Seed", "Solid"]
+    },
+    {
+      "id": "IDX-E0148",
+      "employee_name": "Samuel Newman",
+      "key": "flutter",
+      "available": "no",
+      "projects": ["Trellis", "Arena 9"]
+    },
+    {
+      "id": "IDX-E0149",
+      "employee_name": "Jocelyn Pennington",
+      "key": "python",
+      "available": "no",
+      "projects": ["Trellis"]
+    },
+    {
+      "id": "IDX-E0150",
+      "employee_name": "Carolyn Baker",
+      "key": "java",
+      "available": "yes",
+      "projects": ["Trellis", "Halo"]
+    },
+    {
+      "id": "IDX-E0151",
+      "employee_name": "Teagan Perez",
+      "key": "python",
+      "available": "yes",
+      "projects": ["Trellis"]
+    }
+  ]
+}

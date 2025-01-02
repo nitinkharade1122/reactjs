@@ -51,7 +51,7 @@ const LoginByUserNamePassword = ({ getOtpOnEmail }: LoginProps) => {
     const rolePassword = getRolePassword(index);
     await setFieldValue("email", roleEmail, true);
     await setFieldValue("password", rolePassword, true);
-    const route = index === 0 || index === 1 ? ROUTES.ADMIN_LOGIN : ROUTES.LOGIN;
+    const route = index === 0 ? ROUTES.ADMIN_LOGIN : ROUTES.LOGIN;
     navigate(route, {
       state: { email: roleEmail, password: rolePassword }
     });

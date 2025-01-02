@@ -5,6 +5,7 @@ export const DASHBOARDS = 'dashboards';
 export const TRANSACTIONS = 'transactions';
 
 export const DASHBOARD = '/dashboard';
+export const USER_DASHBOARD = '/user-dashboard';
 export const TENANT = '/tenant';
 export const USER = '/user';
 export const ROLE = '/role';

@@ -11,6 +11,8 @@ import { Button, Card, Tables } from 'src/shared/components';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { addTenantAPI, addUserAPI, deleteTenantAPI, deleteUserAPI, editTenantAPI, editUserAPI, getRoleAPI, getTenantAPI, getUserAPI } from './apis/userTenantRoleAPI';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store/configure-store';
 
 interface Role {
   id: string;
@@ -41,6 +43,7 @@ const Dashboard = ({ title }) => {
   const currentPath = location.pathname;
 
   const showAddButton = currentPath !== ROUTES.ROLE;
+  const userData = useSelector((state: RootState) => state.userData)
 
   /**
    * Handles the form submission for adding a new user or tenant.
@@ -184,7 +187,7 @@ const Dashboard = ({ title }) => {
         roles: [roleName]
       }];
       try {
-        await editUserAPI(selectedUser.id, userName, tenantRoles.map(role => ({
+        await editUserAPI(selectedUser.id, values.name, tenantRoles.map(role => ({
           tenantId: parseInt(role.tenantId),
           roles: role.roles.map(roleName => roleName.toString())
         })));
@@ -232,8 +235,13 @@ const Dashboard = ({ title }) => {
 
     try {
       const response: Role[] = await getRoleAPI();
-      setRows(response);
-      setRoles(response);
+      // Transform role names: Replace underscores with spaces
+      const transformedResponse = response.map((role) => ({
+        ...role,
+        role: role.role.replace(/_/g, " "), // Replace underscores with spaces
+      }));
+      setRows(transformedResponse);
+      setRoles(transformedResponse);
     } catch (error) {
       console.error('Error fetching roles:', error);
     }
@@ -286,10 +294,14 @@ const Dashboard = ({ title }) => {
       // Update role options
       const roleField = updatedFormFields[USER].find((field) => field.id === 'role');
       if (roleField) {
-        roleField.options = roles.map((item) => ({
-          label: item.role,
-          value: item.id,
-        }));
+        const isTenantAdmin = userData.tenantRoles.some(role => role.roles.includes('ADMIN'));
+
+        roleField.options = roles
+          .filter(role => !(isTenantAdmin && role.role === 'SUPER_ADMIN')) // Exclude SUPER_ADMIN if Admin
+          .map((item) => ({
+            label: item.role === 'SUPER_ADMIN' ? 'SUPER_ADMIN' : item.role, // Replace SUPER_ADMIN with SUPER ADMIN
+            value: item.id,
+          }));
       }
 
       // Update tenant options

@@ -1,0 +1,124 @@
+{
+  "user": {
+    "name": "John Smith",
+    "avatar": "/static/images/avatars/1.jpg"
+  },
+  "accountDetails": {
+    "acBalance": "54,584.23",
+    "currencyValue": "1.0045983485234",
+    "currencyUnit": "BTC",
+    "currentValue": "3,594.00",
+    "chartSeries": [20, 10, 40, 30],
+    "currency": [
+      {
+        "unit": "BTC",
+        "currency": "Bitcoin",
+        "currencyLogo": "/static/images/placeholders/logo/bitcoin.png",
+        "marketShare": 20,
+        "valueRate": "+2.54"
+      },
+      {
+        "unit": "XRP",
+        "currency": "Ripple",
+        "currencyLogo": "/static/images/placeholders/logo/ripple.png",
+        "marketShare": 10,
+        "valueRate": "-1.22"
+      },
+      {
+        "unit": "ADA",
+        "currency": "Cardano",
+        "currencyLogo": "/static/images/placeholders/logo/cardano.png",
+        "marketShare": 40,
+        "valueRate": "-1.22"
+      },
+      {
+        "unit": "ETH",
+        "currency": "Ethereum",
+        "currencyLogo": "/static/images/placeholders/logo/ethereum.png",
+        "marketShare": 30,
+        "valueRate": "-12.38"
+      }
+    ]
+  },
+  "walletDetails": [
+    {
+      "currency": "Bitcoin",
+      "currencyLogo": "/static/images/placeholders/logo/bitcoin.png",
+      "unit": "BTC",
+      "usdBalance": "3,586.22",
+      "currencyBalance": "1.25843"
+    },
+    {
+      "currency": "Ripple",
+      "currencyLogo": "/static/images/placeholders/logo/ripple.png",
+      "unit": "XRP",
+      "usdBalance": "586.83",
+      "currencyBalance": "5,783"
+    },
+    {
+      "currency": "Cardano",
+      "currencyLogo": "/static/images/placeholders/logo/cardano.png",
+      "unit": "ADA",
+      "usdBalance": "54,985.00",
+      "currencyBalance": "34,985"
+    }
+  ],
+  "accountSecurity": {
+    "authStatus": "Disabled",
+    "phoneStatus": "Active",
+    "emailStatus": "Not completed"
+  },
+  "watchList": [
+    {
+      "currencyLogo": "/static/images/placeholders/logo/bitcoin.png",
+      "currency": "Bitcoin",
+      "unit": "BTC",
+      "toUsd": "56,475.99",
+      "valueRate": "+12.5",
+      "dailyRate": "500",
+      "chartData": [
+        {
+          "name": "Bitcoin",
+          "data": [55.701, 57.598, 48.607, 46.439, 58.755, 46.978, 58.16]
+        }
+      ]
+    },
+    {
+      "currencyLogo": "/static/images/placeholders/logo/ethereum.png",
+      "currency": "Ethereum",
+      "unit": "ETH",
+      "toUsd": "1,968.00",
+      "valueRate": "-3.24",
+      "dailyRate": "-90",
+      "chartData": [
+        {
+          "name": "Ethereum",
+          "data": [1.854, 1.873, 1.992, 2.0, 1.909, 1.942, 1.884]
+        }
+      ]
+    },
+    {
+      "currencyLogo": "/static/images/placeholders/logo/cardano.png",
+      "currency": "Cardano",
+      "unit": "ADA",
+      "toUsd": "23.00",
+      "valueRate": "-0.33",
+      "dailyRate": "-5",
+      "chartData": [
+        {
+          "name": "Cardano",
+          "data": [13, 16, 14, 18, 8, 11, 20]
+        }
+      ]
+    }
+  ],
+  "Watchlistlabel": [
+    "Monday",
+    "Tueday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ]
+}
