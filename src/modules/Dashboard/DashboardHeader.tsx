@@ -5,7 +5,8 @@ import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 
 
 
-const DashboardHeader = ({ title, onAddClick, showAddButton = true }) => {
+const DashboardHeader = ({ title, onAddTenantClick,
+    onAddAuthConfigClick, showAddButton = true, showAddAuthConfigButton = true }) => {
 
     /**
      * Extracts the first word from a given phrase.
@@ -34,9 +35,21 @@ const DashboardHeader = ({ title, onAddClick, showAddButton = true }) => {
                             className="letter-spacing"
                             variant={'contained'}
                             startIcon={<AddTwoToneIcon fontSize="small" />}
-                            onClick={onAddClick}
+                            onClick={onAddTenantClick}
                         >
                             {`Add ${extractedWord}`}
+                        </Button>
+                    )}
+                    {showAddAuthConfigButton && (
+                        <Button
+                            size={'small'}
+                            sx={{ pt: 1, pb: 1 }}
+                            className="letter-spacing"
+                            variant={'contained'}
+                            startIcon={<AddTwoToneIcon fontSize="small" />}
+                            onClick={onAddAuthConfigClick}
+                        >
+                            {`Add Auth Config`}
                         </Button>
                     )}
                     <TextField

@@ -81,21 +81,6 @@ export const getCustomerSatisfactionDetails = createAsyncThunk(
   }
 );
 
-// const getDeviceInfoListInsert = (deviceInfoList) => {
-//   return [
-//     ...deviceInfoList.map((entry) => {
-//       return {
-//         deviceSrNo: entry.deviceSrNo,
-//         deviceStatus: entry.deviceStatus,
-//         fwVersion: entry.fwVersion,
-//         lastSyncTime: entry.lastSyncTime,
-//         deviceGroupId: entry.deviceGroups.map((item) => item.deviceGroupId),
-//         deviceGroupName: entry.deviceGroups.map((item) => item.deviceGroupName)
-//       };
-//     })
-//   ];
-// };
-
 export const groupSlice = createSlice({
   name: 'dashboardData',
   initialState,

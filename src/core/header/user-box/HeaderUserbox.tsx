@@ -6,12 +6,13 @@ import { useAuth } from 'src/providers/AuthguardContext';
 import { Typography } from 'src/shared/components/index';
 import { getLoggedInUserData } from 'src/modules/Transactions/services/transaction.service';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppDispatch, RootState } from 'src/store/configure-store';
+import { AppDispatch, persistor, RootState } from 'src/store/configure-store';
 import { LOGIN } from '../../../shared/constants/routes';
 import { useNavigate } from 'react-router';
 import { clearUserDetails } from '../../../store/reducer/userReducer';
 
 interface TenantRole {
+  tenantId: number;
   roles?: string[];
 }
 
@@ -25,6 +26,8 @@ const HeaderUserbox = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const userData = useSelector((state: RootState) => state.userData) as UserData;
+  const selectedTenantId = useSelector((state: RootState) => state.userData.selectedTenantId);
+
   useEffect(() => {
     dispatch(getLoggedInUserData());
   }, []);
@@ -43,6 +46,9 @@ const HeaderUserbox = () => {
 
   const userLogout = () => {
     dispatch(clearUserDetails());
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    persistor.purge();
     navigate(LOGIN);
   };
   /**
@@ -58,11 +64,20 @@ const HeaderUserbox = () => {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   }
+
+  /**
+   * Get the current role for the selected tenant
+   * @returns The current role for the selected tenant.
+   */
+  const getCurrentRole = () => {
+    const tenantRole = userData.tenantRoles.find(role => role.tenantId === selectedTenantId);
+    return tenantRole ? tenantRole.roles[0] : 'No Role'; // Return the role for the current tenant
+  };
   /**
    * Extract and format the role
    * @returns The formatted role string.
    */
-  const formattedRole = convertToTitleCase(userData?.tenantRoles?.[0]?.roles?.[0]);
+  const formattedRole = convertToTitleCase(getCurrentRole());
 
 
 

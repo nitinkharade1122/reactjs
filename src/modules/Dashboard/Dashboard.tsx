@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DashboardHeader from './DashboardHeader'
 import { Box } from '@mui/system'
-import { formFieldsByRoute, initialValuesByRoute, editUserFormFields } from 'src/shared/constants/formFields'
+import { formFieldsByRoute, initialValuesByRoute, editUserFormFields, addAuthConfigFormFields } from 'src/shared/constants/formFields'
 import { SimpleDialog } from 'src/shared/components/modals/SimpleDialog';
 import CustomForm from 'src/shared/components/custom-form/CustomForm';
 import { USER, TENANT, ROLE } from 'src/shared/constants/routes';
@@ -10,7 +10,7 @@ import * as ROUTES from "../../shared/constants/routes";
 import { Button, Card, Tables } from 'src/shared/components';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { addTenantAPI, addUserAPI, deleteTenantAPI, deleteUserAPI, editTenantAPI, editUserAPI, getRoleAPI, getTenantAPI, getUserAPI } from './apis/userTenantRoleAPI';
+import { addTenantAPI, addTenantAuthConfig, addUserAPI, deleteTenantAPI, deleteUserAPI, editTenantAPI, editUserAPI, getRoleAPI, getTenantAPI, getUserAPI } from './apis/userTenantRoleAPI';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store/configure-store';
 
@@ -32,6 +32,7 @@ const Dashboard = ({ title }) => {
   const [confirmDeleteDialog, setConfirmDeleteDialog] = useState(false);
   const [editTenantDialogOpen, setEditTenantDialogOpen] = useState(false);
   const [editUserDialogOpen, setEditUserDialogOpen] = useState(false);
+  const [addAuthConfigDialogOpen, setAddAuthConfigDialogOpen] = useState(false);
   const [userTenants, setUserTenants] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -39,10 +40,12 @@ const Dashboard = ({ title }) => {
   const [tenants, setTenants] = useState([]);
   const [roles, setRoles] = useState([]);
   const [formFields, setFormFields] = useState(formFieldsByRoute);
+  const [authConfigFormFields, setAuthConfigFormFields] = useState(addAuthConfigFormFields);
   const location = useLocation();
   const currentPath = location.pathname;
 
   const showAddButton = currentPath !== ROUTES.ROLE;
+  const showAddAuthConfigButton = currentPath !== ROUTES.ROLE && currentPath !== ROUTES.USER;
   const userData = useSelector((state: RootState) => state.userData)
 
   /**
@@ -74,6 +77,7 @@ const Dashboard = ({ title }) => {
    */
   const handleClose = () => {
     setOpenDialog(false);
+    setAddAuthConfigDialogOpen(false);
   };
 
   /**
@@ -172,6 +176,29 @@ const Dashboard = ({ title }) => {
   };
 
   /**
+   * Handles the form submission for adding an auth config.
+   * @param values - The form values to be submitted.
+   */
+  const handleTenantAuthConfigSaveEdit = async (values: any) => {
+    const tenantAuthConfigData = {
+      tenantId: values.tenant,
+      domains: values.domains.split('\n'),
+      cert: JSON.stringify(values.certificate),
+      issuer: values.issuer,
+      entryPoint: values.entryPoint,
+    }
+
+    if (values) {
+      try {
+        await addTenantAuthConfig(tenantAuthConfigData);
+        setAddAuthConfigDialogOpen(false);
+      } catch (error) {
+        console.error('Error updating tenant:', error);
+      }
+    }
+  };
+
+  /**
    * Handles the form submission for editing a user.
    * @param values - The form values to be submitted.
    */
@@ -213,6 +240,13 @@ const Dashboard = ({ title }) => {
     setOpenDialog(false);
     setSelectedUser(null);
     setUserName('');
+  };
+
+  /**
+   * Handles the click event for adding an auth config.
+   */
+  const handleAddAuthConfigClick = () => {
+    setAddAuthConfigDialogOpen(true);
   };
 
   /**
@@ -290,6 +324,7 @@ const Dashboard = ({ title }) => {
 
       // Create a copy of formFieldsByRoute
       const updatedFormFields = { ...formFieldsByRoute };
+      const updatedAuthConfigFields = [...addAuthConfigFormFields];
 
       // Update role options
       const roleField = updatedFormFields[USER].find((field) => field.id === 'role');
@@ -312,6 +347,17 @@ const Dashboard = ({ title }) => {
           value: item.id,
         }));
       }
+
+      const authTenantField = updatedAuthConfigFields.find((field) => field.id === 'tenant');
+      if (authTenantField) {
+        authTenantField.options = tenants.map((item) => ({
+          label: item.tenant,
+          value: item.id,
+        }));
+      }
+
+      setAuthConfigFormFields(updatedAuthConfigFields);
+
       return updatedFormFields;
     } catch (error) {
       console.error('Error fetching options:', error);
@@ -409,7 +455,18 @@ const Dashboard = ({ title }) => {
       />
     </Box>
   );
-
+  const dialogContentForAddAuthConfig = (
+    <Box sx={{ minWidth: 400, p: 2 }}>
+      <CustomForm
+        formFields={authConfigFormFields}
+        initialValues={{}}
+        submitBtnText="Save"
+        cancelBtnText="Cancel"
+        submitBtnHandler={handleTenantAuthConfigSaveEdit}
+        cancelBtnHandler={handleClose}
+      />
+    </Box>
+  );
   /**
    * Dialog content for editing a user.
    */
@@ -506,7 +563,7 @@ const Dashboard = ({ title }) => {
   return (
     <>
       <Box >
-        <DashboardHeader title={title} onAddClick={handleAddClick} showAddButton={showAddButton} />
+        <DashboardHeader title={title} onAddTenantClick={handleAddClick} onAddAuthConfigClick={handleAddAuthConfigClick} showAddButton={showAddButton} showAddAuthConfigButton={showAddAuthConfigButton} />
         <Card sx={{ m: 3 }}>
           <Box flex={1}>
             <Tables rows={rows} columns={getColumns()} checkboxSelection={false} />
@@ -543,6 +600,12 @@ const Dashboard = ({ title }) => {
         onClose={handleCancelEdit}
         model_title={<>{`Edit User`}</>}
         model_content={dialogContentForEditUser}
+      />
+      <SimpleDialog
+        open={addAuthConfigDialogOpen}
+        onClose={handleClose}
+        model_title={<>{`Add Auth Config`}</>}
+        model_content={dialogContentForAddAuthConfig}
       />
     </>
   )

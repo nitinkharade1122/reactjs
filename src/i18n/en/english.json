@@ -25,7 +25,8 @@
     "otpText": "OTP",
     "dontReceiveOpt": "Don’t receive an OTP? ",
     "resendOpt": "Resend OTP",
-    "logoutBtnText": "Log Out"
+    "logoutBtnText": "Log Out",
+    "loginWithPassword": "Login with Password"
   },
   "validationErrMsg": {
     "required_err_msg": "{{fieldLabel}} is required",

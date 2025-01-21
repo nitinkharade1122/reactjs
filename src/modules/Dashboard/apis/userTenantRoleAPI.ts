@@ -142,3 +142,22 @@ export const getRoleAPI = async () => {
     return [];
   }
 };
+
+export const addTenantAuthConfig = async (tenantAuthConfigData: {
+  tenantId: number;
+  domains: string[];
+  cert: string;
+  issuer: string;
+  entryPoint: string;
+}) => {
+  try {
+    const response = await apiPost(
+      '/api/v1/tenant-auth-config',
+      tenantAuthConfigData
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error creating tenant auth config:', error);
+    throw error;
+  }
+};

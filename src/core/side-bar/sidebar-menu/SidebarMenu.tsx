@@ -6,9 +6,10 @@ import { RootState } from "../../../../src/store/configure-store";
 
 const SidebarMenu = () => {
   const userData = useSelector((state: RootState) => state.userData);
+  const selectedTenantId = userData.tenantRoles.filter(tenantRole => tenantRole.tenantId === userData.selectedTenantId);
   const isPlatformAdmin = userData.tenantRoles.some(role => role.roles.includes('SUPER_ADMIN'));
-  const isTenantAdmin = userData.tenantRoles.some(role => role.roles.includes('ADMIN'));
-  const isUser = userData.tenantRoles.some(role => role.roles.includes('USER'));
+  const isTenantAdmin = selectedTenantId.some(role => role.roles.includes('ADMIN'));
+  const isUser = selectedTenantId.some(role => role.roles.includes('USER'));
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface TenantRoleType {
   tenantId: number;
@@ -10,17 +10,19 @@ export interface UserType {
   email: string;
   userId: number;
   tenantRoles: TenantRoleType[];
+  selectedTenantId: number | null;
 }
 
 const initialState: UserType = {
-  name: "",
-  email: "",
+  name: '',
+  email: '',
   userId: 0,
   tenantRoles: [],
+  selectedTenantId: null,
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     setUserDetails(state, action: PayloadAction<UserType>) {
@@ -29,8 +31,12 @@ const userSlice = createSlice({
     clearUserDetails(state) {
       return initialState;
     },
+    setSelectedTenantId(state, action: PayloadAction<number | null>) {
+      state.selectedTenantId = action.payload;
+    },
   },
 });
 
-export const { setUserDetails, clearUserDetails } = userSlice.actions;
+export const { setUserDetails, clearUserDetails, setSelectedTenantId } =
+  userSlice.actions;
 export default userSlice.reducer;

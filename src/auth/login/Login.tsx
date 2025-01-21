@@ -9,16 +9,31 @@ import IllustrationLogin from 'src/assets/images/IllustrationLogin.svg';
 import logo from 'src/assets/images/indexnine-logo.svg';
 import axiosInstance from 'src/core/interceptors/axios-instance';
 import { Card } from 'src/shared/components/index';
-import { setUserDetails, UserType } from 'src/store/reducer/userReducer';
+import { setSelectedTenantId, setUserDetails, UserType } from 'src/store/reducer/userReducer';
 import styled from 'styled-components';
-import { TENANT, USER, USER_DASHBOARD } from '../../shared/constants/routes';
 import LoginByUserNamePassword from './LoginByUserNamePassword';
+import { useState } from 'react';
+import {
+  ToastMsgs
+} from 'src/shared/components/toaster/Toast';
+import PasswordWithLogin from './PasswordWithLogin';
+import { getLoginMethodAPI, getLoginSSOAPI } from './api/api';
+import { LIST_OF_TENANTS, USER_DASHBOARD, USER } from 'src/shared/constants/routes';
+export type loginData = {
+  loginType: string;
+  email: string;
+};
 
 const Login = () => {
   // Constants
   const navigate = useNavigate();
   const { t } = useTranslation(['english']);
   const dispatch = useDispatch();
+
+  //state variables
+  const [loginType, setLoginType] = useState<string>('');
+  const [isOnEmailScreen, setIsOnEmailScreen] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>('');
 
   //methods
   const MainContent = styled(Box)(
@@ -32,37 +47,70 @@ const Login = () => {
       justify-content: center;
   `
   );
+  const responseonSuccessGoogle = (response: any) => {
+    if (response) {
 
-  const getOtpOnEmail = async (value) => {
-    const res = await axiosInstance.post('api/v1/auth/login', {
-      email: value.email,
-      password: value.password,
-    });
-    const token = res?.data?.accessToken?.token;
-    localStorage.setItem('access_token', `Bearer ${token}`);
+    }
+  };
 
+  const responseonFailureGoogle = (response: any) => {
+  };
+
+  const handleTokenAndNavigation = (token: string, refreshToken: string) => {
     if (token) {
+      localStorage.setItem('access_token', `Bearer ${token}`);
+      localStorage.setItem('refresh_token', `Bearer ${refreshToken}`);
       const decodedToken = jwtDecode<UserType>(token);
       dispatch(setUserDetails(decodedToken));
-      const isSuperAdmin = decodedToken.tenantRoles.find((role) =>
-        role.roles.includes('SUPER_ADMIN')
-      );
-      const isAdmin = decodedToken.tenantRoles.find((role) =>
-        role.roles.includes('ADMIN')
-      );
-      // Navigate based on the role
-      if (isSuperAdmin) {
-        axiosInstance.defaults.headers['currentTenantId'] =
-          isSuperAdmin?.tenantId;
-        navigate(TENANT);
-      } else if (isAdmin) {
-        axiosInstance.defaults.headers['currentTenantId'] = isAdmin?.tenantId;
-        navigate(USER);
+
+      if (decodedToken.tenantRoles.length > 1) {
+        navigate(LIST_OF_TENANTS, { state: { decodedToken } });
       } else {
         axiosInstance.defaults.headers['currentTenantId'] =
           decodedToken?.tenantRoles[0]?.tenantId;
-        navigate(USER_DASHBOARD);
+        dispatch(setSelectedTenantId(decodedToken?.tenantRoles[0]?.tenantId));
+        if (decodedToken.tenantRoles[0].roles.includes('ADMIN')) {
+          navigate(USER);
+        } else {
+          navigate(USER_DASHBOARD);
+        }
       }
+    }
+  };
+
+  const handlePasswordLogin = async (value: { password: string }) => {
+
+    try {
+      const res = await axiosInstance.post('api/v1/auth/login', {
+        email: email,
+        password: value.password,
+      });
+      const token = res?.data?.accessToken?.token;
+      const refreshToken = res?.data?.refreshToken?.token;
+      handleTokenAndNavigation(token, refreshToken);
+    } catch (error) {
+      ToastMsgs.showErrorMessage(error.response?.data?.message, {
+        position: 'top-right'
+      });
+    }
+  };
+
+  const handleLoginMethod = async (value: { email: string }) => {
+    setEmail(value.email);
+    try {
+      const loginMethod = await getLoginMethodAPI(value.email);
+
+      if (loginMethod === 'sso') {
+        // Handle SSO login
+        await getLoginSSOAPI(value.email);
+      } else if (loginMethod === 'password') {
+        setIsOnEmailScreen(false);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      ToastMsgs.showErrorMessage(error.response?.data?.message, {
+        position: 'top-right'
+      });
     }
   };
 
@@ -94,46 +142,53 @@ const Login = () => {
                       src={logo}
                     />
                   </Box>
-                  <>
-                    <Box>
-                      <Box
-                        className="text-h4 welcomeText font-weight-semibold"
-                        sx={{ mb: 4 }}
-                      >
-                        {t('login.welcomeText')}
-                      </Box>
-                    </Box>
-                    <LoginByUserNamePassword getOtpOnEmail={getOtpOnEmail} />
-                    <Divider sx={{ my: 5 }}>{t('login.orText')}</Divider>
-                    <Box className="w-100">
-                      <FormControl
-                        className="w-100"
-                        variant="outlined"
-                        fullWidth
-                      >
+                  {isOnEmailScreen ? (
+                    <>
+                      <Box>
                         <Box
-                          textAlign="center"
-                          display={'flex'}
-                          justifyContent={'center'}
-                          className="w-100"
+                          className="text-h4 welcomeText font-weight-semibold"
+                          sx={{ mb: 4 }}
                         >
-                          <GoogleOAuthProvider
-                            clientId={'AUTH_CONFIG.GOOGLE_CLIENT_ID'}
-                          >
-                            <GoogleLogin
-                              onSuccess={(resp) => {
-                                console.log(resp);
-                              }}
-                              onError={() => {
-                                console.log('failed');
-                              }}
-                              useOneTap={false}
-                            />
-                          </GoogleOAuthProvider>
+                          {t('login.welcomeText')}
                         </Box>
-                      </FormControl>
-                    </Box>
-                  </>
+                      </Box>
+                      <LoginByUserNamePassword getOtpOnEmail={handleLoginMethod} setIsOnEmailScreen={setIsOnEmailScreen}
+                        loginType={loginType} />
+                      <Divider sx={{ my: 5 }}>{t('login.orText')}</Divider>
+                      <Box className="w-100">
+                        <FormControl
+                          className="w-100"
+                          variant="outlined"
+                          fullWidth
+                        >
+                          <Box
+                            textAlign="center"
+                            display={'flex'}
+                            justifyContent={'center'}
+                            className="w-100"
+                          >
+                            <GoogleOAuthProvider
+                              clientId={'AUTH_CONFIG.GOOGLE_CLIENT_ID'}
+                            >
+                              <GoogleLogin
+                                onSuccess={(response) => {
+                                  responseonSuccessGoogle(response);
+                                }}
+                                onError={() => {
+                                  responseonFailureGoogle(null);
+                                }}
+                                useOneTap={false}
+                              />
+                            </GoogleOAuthProvider>
+                          </Box>
+                        </FormControl>
+                      </Box>
+                    </>
+                  ) : (
+                    <>
+                      <PasswordWithLogin loginWithPassword={handlePasswordLogin} />
+                    </>
+                  )}
                 </Box>
               </Card>
             </Grid>

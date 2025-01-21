@@ -9,6 +9,8 @@ export const USER_DASHBOARD = '/user-dashboard';
 export const TENANT = '/tenant';
 export const USER = '/user';
 export const ROLE = '/role';
+export const AUTH = '/auth';
+export const LIST_OF_TENANTS = '/list-of-tenants';
 
 export const ADMIN_LOGIN = '/admin';
 export const ORGANIZATION = '/organization';

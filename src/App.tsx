@@ -18,9 +18,10 @@ import {
 import { StylesProvider } from '@mui/styles';
 import { Provider } from 'react-redux';
 import { themeCreator } from '../src/core/theme/base';
-import { store } from '../src/store/configure-store';
+import { persistor, store } from '../src/store/configure-store';
 import { AuthProvider } from './providers/AuthguardContext';
 import { Select } from './shared/components/index';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const App = () => {
   const content = useRoutes(router);
@@ -95,17 +96,19 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <AuthProvider>
-          <StylesProvider injectFirst>
-            <ThemeProvider theme={theme}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <CssBaseline />
-                {content}
-                {configsButton}
-              </LocalizationProvider>
-            </ThemeProvider>
-          </StylesProvider>
-        </AuthProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <AuthProvider>
+            <StylesProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <CssBaseline />
+                  {content}
+                  {configsButton}
+                </LocalizationProvider>
+              </ThemeProvider>
+            </StylesProvider>
+          </AuthProvider>
+        </PersistGate>
       </Provider>
     </>
   );

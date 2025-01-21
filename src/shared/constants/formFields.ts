@@ -156,3 +156,70 @@ export const editUserFormFields: FormFieldType[] = [
   editUserNameField,
   ...editUserTenantAndRoleFields,
 ];
+
+export const addAuthConfigFormFields: FormFieldType[] = [
+  {
+    id: 'tenant',
+    name: 'tenant',
+    type: 'select',
+    label: 'Tenant',
+    options: [],
+    itemLabelKey: 'label',
+    itemValueKey: 'value',
+    validations: {
+      required: true,
+    },
+    errorMessages: {
+      requiredErrMsg: 'Tenant is required',
+    },
+  },
+  {
+    id: 'domains',
+    name: 'domains',
+    type: 'textarea',
+    label: 'Domains(comma separated multiple domains)',
+    validations: {
+      required: true,
+    },
+    errorMessages: {
+      requiredErrMsg: 'Domain is required',
+    },
+  },
+  {
+    id: 'certificate',
+    name: 'certificate',
+    type: 'textarea',
+    label: 'Certificate',
+    validations: {
+      required: true,
+    },
+    errorMessages: {
+      requiredErrMsg: 'Certificate is required',
+    },
+  },
+  {
+    id: 'issuer',
+    name: 'issuer',
+    type: 'textarea',
+    label: 'Issuer',
+    validations: {
+      required: true,
+    },
+    errorMessages: {
+      requiredErrMsg: 'Issuer is required',
+    },
+  },
+  {
+    id: 'entryPoint',
+    name: 'entryPoint',
+    type: 'textarea',
+    label: 'Entry Point',
+    options: [],
+    validations: {
+      required: true,
+    },
+    errorMessages: {
+      requiredErrMsg: 'Entry Point is required',
+    },
+  },
+];

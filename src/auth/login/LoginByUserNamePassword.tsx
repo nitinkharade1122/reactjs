@@ -7,30 +7,32 @@ import { FormFieldType } from "src/shared/components/form-field/service/formFiel
 import { Button, FormField } from "src/shared/components/index";
 import { DEMO_EMAILS, DEMO_PASSWORDS } from "src/shared/constants/constants";
 import * as ROUTES from "../../shared/constants/routes";
+import { Dispatch } from "react";
 
 
 interface LoginProps {
+  loginType: string;
   getOtpOnEmail?: (e: any) => void;
+  setIsOnEmailScreen?: Dispatch<boolean>;
 }
 
 interface LocationState {
-  password?: string;
   email?: string;
 }
 
-const LoginByUserNamePassword = ({ getOtpOnEmail }: LoginProps) => {
-  //const
+const LoginByUserNamePassword = ({ loginType,
+  getOtpOnEmail,
+  setIsOnEmailScreen }: LoginProps) => {
+
   const { t } = useTranslation(["english"]);
   const location = useLocation();
   const navigate = useNavigate();
   const locationState = (location.state as LocationState) || {};
   const initialEmail = locationState.email || "";
-  const initialPassword = locationState.password || "";
   const [clickedRole, setClickedRole] = useState(null);
 
   const initialValue = {
     email: "",
-    password: "",
     role: "super-admin",
   };
 
@@ -99,10 +101,7 @@ const LoginByUserNamePassword = ({ getOtpOnEmail }: LoginProps) => {
     if (initialEmail) {
       setFieldValue("email", initialEmail);
     }
-    if (initialPassword) {
-      setFieldValue("password", initialPassword);
-    }
-  }, [initialEmail, initialPassword]);
+  }, [initialEmail]);
 
   useEffect(() => {
     if (initialEmail === DEMO_EMAILS.PLATFORM_ADMIN) {
@@ -130,21 +129,6 @@ const LoginByUserNamePassword = ({ getOtpOnEmail }: LoginProps) => {
       errorMessages: {
         requiredErrMsg: "Please enter valid email address*",
         emailErrMsg: "Please enter valid email address*",
-      },
-    },
-    {
-      id: "password",
-      name: "password",
-      type: "password",
-      label: "Password",
-      handleKeyDown: handleKeyDown,
-      placeholder: "Enter password",
-      validations: {
-        required: true,
-      },
-      errorMessages: {
-        requiredErrMsg: "Please enter valid password",
-        emailErrMsg: "Please enter valid password",
       },
     },
   ];
@@ -197,7 +181,7 @@ const LoginByUserNamePassword = ({ getOtpOnEmail }: LoginProps) => {
 
       <Button
         btnText={t("login.continueBtnText")}
-        disabled={isValid}
+        disabled={!isValid}
         sx={{ mt: 5 }}
         className="w-100"
         variant={"contained"}
