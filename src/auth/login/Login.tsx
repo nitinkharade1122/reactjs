@@ -9,16 +9,22 @@ import IllustrationLogin from 'src/assets/images/IllustrationLogin.svg';
 import logo from 'src/assets/images/indexnine-logo.svg';
 import axiosInstance from 'src/core/interceptors/axios-instance';
 import { Card } from 'src/shared/components/index';
-import { setSelectedTenantId, setUserDetails, UserType } from 'src/store/reducer/userReducer';
+import {
+  setSelectedTenantId,
+  setUserDetails,
+  UserType,
+} from 'src/store/reducer/userReducer';
 import styled from 'styled-components';
 import LoginByUserNamePassword from './LoginByUserNamePassword';
 import { useState } from 'react';
-import {
-  ToastMsgs
-} from 'src/shared/components/toaster/Toast';
+import { ToastMsgs } from 'src/shared/components/toaster/Toast';
 import PasswordWithLogin from './PasswordWithLogin';
 import { getLoginMethodAPI, getLoginSSOAPI } from './api/api';
-import { LIST_OF_TENANTS, USER_DASHBOARD, USER } from 'src/shared/constants/routes';
+import {
+  LIST_OF_TENANTS,
+  USER_DASHBOARD,
+  USER,
+} from 'src/shared/constants/routes';
 export type loginData = {
   loginType: string;
   email: string;
@@ -49,12 +55,10 @@ const Login = () => {
   );
   const responseonSuccessGoogle = (response: any) => {
     if (response) {
-
     }
   };
 
-  const responseonFailureGoogle = (response: any) => {
-  };
+  const responseonFailureGoogle = (response: any) => {};
 
   const handleTokenAndNavigation = (token: string, refreshToken: string) => {
     if (token) {
@@ -79,9 +83,8 @@ const Login = () => {
   };
 
   const handlePasswordLogin = async (value: { password: string }) => {
-
     try {
-      const res = await axiosInstance.post('api/v1/auth/login', {
+      const res = await axiosInstance.post('/api/v1/auth/login', {
         email: email,
         password: value.password,
       });
@@ -90,7 +93,7 @@ const Login = () => {
       handleTokenAndNavigation(token, refreshToken);
     } catch (error) {
       ToastMsgs.showErrorMessage(error.response?.data?.message, {
-        position: 'top-right'
+        position: 'top-right',
       });
     }
   };
@@ -107,9 +110,9 @@ const Login = () => {
         setIsOnEmailScreen(false);
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error('Error during login:', error);
       ToastMsgs.showErrorMessage(error.response?.data?.message, {
-        position: 'top-right'
+        position: 'top-right',
       });
     }
   };
@@ -152,8 +155,11 @@ const Login = () => {
                           {t('login.welcomeText')}
                         </Box>
                       </Box>
-                      <LoginByUserNamePassword getOtpOnEmail={handleLoginMethod} setIsOnEmailScreen={setIsOnEmailScreen}
-                        loginType={loginType} />
+                      <LoginByUserNamePassword
+                        getOtpOnEmail={handleLoginMethod}
+                        setIsOnEmailScreen={setIsOnEmailScreen}
+                        loginType={loginType}
+                      />
                       <Divider sx={{ my: 5 }}>{t('login.orText')}</Divider>
                       <Box className="w-100">
                         <FormControl
@@ -186,7 +192,9 @@ const Login = () => {
                     </>
                   ) : (
                     <>
-                      <PasswordWithLogin loginWithPassword={handlePasswordLogin} />
+                      <PasswordWithLogin
+                        loginWithPassword={handlePasswordLogin}
+                      />
                     </>
                   )}
                 </Box>
