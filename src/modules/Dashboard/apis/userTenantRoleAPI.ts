@@ -24,7 +24,7 @@ interface UserApiResponse {
 
 export const getTenantAPI = async () => {
   try {
-    const response = await apiGet('api/v1/tenants/list');
+    const response = await apiGet('/api/v1/tenants/list');
     return response.data.map((tenant: any) => ({
       tenant: tenant.name,
       id: tenant.id,
@@ -37,7 +37,7 @@ export const getTenantAPI = async () => {
 
 export const deleteTenantAPI = async (tenantId: number) => {
   try {
-    await apiDelete(`api/v1/tenants/${tenantId}`);
+    await apiDelete(`/api/v1/tenants/${tenantId}`);
   } catch (error) {
     console.error('Error deleting tenant:', error);
     alert('Users are associated with this tenant, please delete users first');
@@ -46,7 +46,7 @@ export const deleteTenantAPI = async (tenantId: number) => {
 
 export const addTenantAPI = async (values: any) => {
   try {
-    const response = await apiPost('api/v1/tenants', {
+    const response = await apiPost('/api/v1/tenants', {
       name: values.tenantName,
     });
     return response;
@@ -57,7 +57,7 @@ export const addTenantAPI = async (values: any) => {
 
 export const editTenantAPI = async (tenantId: number, name: string) => {
   try {
-    await apiPut(`api/v1/tenants/${tenantId}`, { name });
+    await apiPut(`/api/v1/tenants/${tenantId}`, { name });
   } catch (error) {
     console.error('Error deleting tenant:', error);
   }
@@ -66,7 +66,7 @@ export const editTenantAPI = async (tenantId: number, name: string) => {
 export const getUserAPI = async (page: number, limit: number) => {
   try {
     const response = await apiGet<UserApiResponse>(
-      `api/v1/users/list?page=${page}&limit=${limit}`
+      `/api/v1/users/list?page=${page}&limit=${limit}`
     );
 
     const data = response.data.users.map((user) => ({
@@ -87,7 +87,7 @@ export const getUserAPI = async (page: number, limit: number) => {
 
 export const deleteUserAPI = async (userId: number) => {
   try {
-    await apiDelete(`api/v1/users/${userId}`);
+    await apiDelete(`/api/v1/users/${userId}`);
   } catch (error) {
     console.error('Error deleting tenant:', error);
   }
@@ -107,7 +107,7 @@ export const addUserAPI = async (values: any) => {
   };
 
   try {
-    const response = await apiPost('api/v1/users', requestBody);
+    const response = await apiPost('/api/v1/users', requestBody);
     return response;
   } catch (error) {
     console.error('Error adding tenant:', error);
@@ -125,7 +125,7 @@ export const editUserAPI = async (
       tenantRoles,
     };
 
-    await apiPut(`api/v1/users/${userId}`, requestBody);
+    await apiPut(`/api/v1/users/${userId}`, requestBody);
   } catch (error) {
     console.error('Error updating user:', error);
   }
@@ -133,7 +133,7 @@ export const editUserAPI = async (
 
 export const getRoleAPI = async () => {
   try {
-    const response = await apiGet('api/v1/roles');
+    const response = await apiGet('/api/v1/roles');
     return response.data.map((role: any) => ({
       role: role.name,
       id: role.id,
