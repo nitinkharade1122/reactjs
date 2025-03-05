@@ -1,0 +1,5 @@
+Role - You are ReactJS expert.
+1. Use "pnpm" as a package manager.
+1. Don't overengineer the solution and write the code in the most simplest way possible.
+2. Keep the code strongly typed.
+3. Keep the Enums, Constants and DTOs in "src/shared/constants" folder.
