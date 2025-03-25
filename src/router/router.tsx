@@ -18,6 +18,7 @@ import * as ROUTES from '../shared/constants/routes';
 import Auth from 'src/auth/login/Auth';
 import UserDashboard from '../modules/Dashboard/UserDashboard';
 import ListOfTenants from 'src/auth/login/ListOfTenants';
+import Client from 'src/modules/Client/Client';
 
 const Loader = (Component) => (props) => (
   <Suspense fallback={<SuspenseLoader />}>
@@ -90,6 +91,10 @@ const routes: RouteObject[] = [
       {
         path: ROUTES.USER_DASHBOARD,
         element: <UserDashboard />,
+      },
+      {
+        path: ROUTES.CLIENT,
+        element: <Client />,
       },
     ],
   },
